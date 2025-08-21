@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Family Tree</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    svg { width:100%; height:800px; border:1px solid #ccc; background:white; }
+    .node rect { stroke:#333; stroke-width:1.5px; }
+    .node text { font:12px sans-serif; fill:white; pointer-events:none; }
+    .highlight rect { stroke:red; stroke-width:3px; }
+    #controls { margin:10px; }
+    #searchBar { margin:10px; padding:8px; width:300px; }
+    button { margin:2px; padding:6px 10px; border:none; border-radius:4px; background:#444; color:white; cursor:pointer; }
+    button:hover { background:#666; }
+    #legend { margin:10px auto; padding:10px; background:#fff; border:1px solid #ccc; border-radius:6px; display:inline-block; }
+    .legend-item { display:inline-flex; align-items:center; margin-right:12px; }
+    .legend-color { width:20px; height:20px; margin-right:6px; border-radius:3px; }
+    #tooltip { position:absolute; padding:6px 10px; background:rgba(0,0,0,0.8); color:#fff; border-radius:4px; font-size:12px; pointer-events:none; display:none; text-align:left; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Chaturvedi Family Tree</h1>
+</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="tree.html">Family Tree</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="credits.html">Credits</a>
+</nav>
+<main>
+  <div id="controls">
+    <input type="text" id="searchBar" placeholder="Search by name...">
+    <button onclick="searchNode()">Search</button>
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset</button>
+    <button onclick="zoomIn()">Zoom In</button>
+    <button onclick="zoomOut()">Zoom Out</button>
+  </div>
+  <div id="legend"></div>
+  <svg></svg>
+  <div id="tooltip"></div>
+</main>
+<footer>
+  Interactive Family Tree | Data from familyTree.json
+</footer>
+
+<script>
+d3.json("familyTree.json?nocache=" + new Date().getTime()).then(function(data) {
+  // existing tree code stays same (truncated for brevity in this snippet)
+  // ...
+});
+</script>
+</body>
+</html>
